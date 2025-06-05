@@ -20,16 +20,9 @@ jobs:
         with:
           go-version: '1.22'
           cache: true
-      - name: Run tests with coverage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ARGOCD_URL: ${{ secrets.ARGOCD_URL }}
-          ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
-          ARGOCD_TEST_CLUSTER: ${{ secrets.ARGOCD_TEST_CLUSTER }}
-          ARGOCD_TEST_NAMESPACE: ${{ secrets.ARGOCD_TEST_NAMESPACE }}
+      - name: GO Test
         run: |
-          go test -coverprofile=coverage.txt -v ./...
-          go tool cover -html=coverage.txt
+          go test -v ./...
   ci:
     needs: test
     runs-on: ubuntu-latest
