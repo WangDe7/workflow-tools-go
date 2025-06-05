@@ -59,6 +59,7 @@ jobs:
 
 
   release:
+    permissions: write-all
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     needs: [ test, ci ]
