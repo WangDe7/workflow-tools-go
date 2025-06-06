@@ -11,5 +11,4 @@ import "github.com/WangDe7/workflow-tools/cmd"
 
 func main() {
 	cmd.Execute()
-	// debug
 }
