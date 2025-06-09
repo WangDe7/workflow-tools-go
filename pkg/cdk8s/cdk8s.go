@@ -8,7 +8,6 @@
 package cdk8s
 
 import (
-	"fmt"
 	"github.com/WangDe7/cd-template/pkg/config"
 	"github.com/WangDe7/cd-template/stage"
 )
@@ -16,11 +15,6 @@ import (
 // Generate the k8s yaml file
 func Generate(configPath, stageStr, image string, servicePath []string) {
 	config.NewConfig(&configPath)
-	fmt.Println("************************")
-	fmt.Println(config.Cfg.CronJob.Schedule)
-	fmt.Println(config.Cfg.CronJob.RestartPolicy)
-	fmt.Println(config.Cfg.CronJob.FailedJobsHistoryLimit)
-	fmt.Println(config.Cfg.CronJob.SuccessfulJobsHistoryLimit)
 	switch stageStr {
 	case "dev", "test", "local", "alpha", "beta", "staging":
 		config.Cfg.Hpa.Enabled = false

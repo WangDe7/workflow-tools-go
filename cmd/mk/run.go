@@ -10,6 +10,7 @@ package mk
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/WangDe7/cd-template/pkg/config"
 	"log"
 	"os"
 	"path/filepath"
@@ -348,6 +349,11 @@ func run() error {
 				leafs[i].ProjectPath)
 
 		}
+		fmt.Println("******************************")
+		fmt.Println(config.Cfg.CronJob.Schedule)
+		fmt.Println(config.Cfg.CronJob.RestartPolicy)
+		fmt.Println(config.Cfg.CronJob.FailedJobsHistoryLimit)
+		fmt.Println(config.Cfg.CronJob.SuccessfulJobsHistoryLimit)
 		if configStage == "prod" {
 			err = leafs[i].Alert(workspace, rulesFilename, alertManagerPrefix, alertManagerUsername, alertManagerPassword)
 		}
