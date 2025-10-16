@@ -20,6 +20,10 @@ func Generate(configPath, stageStr, image string, servicePath []string) {
 		config.Cfg.Hpa.Enabled = false
 		if config.Cfg.Resources == nil {
 			config.Cfg.Resources = make(map[string]config.Resource)
+			config.Cfg.Resources["limits"] = config.Resource{
+				CPU:    "1",
+				Memory: "2Gi",
+			}
 		}
 		config.Cfg.Resources["requests"] = config.Resource{
 			CPU:    "100m",
