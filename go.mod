@@ -3,7 +3,7 @@ module github.com/WangDe7/workflow-tools
 go 1.22
 
 require (
-	github.com/WangDe7/cd-template v0.0.7
+	github.com/WangDe7/cd-template v0.0.8
 	github.com/aws/aws-sdk-go-v2 v1.21.0
 	github.com/aws/aws-sdk-go-v2/config v1.18.42
 	github.com/aws/aws-sdk-go-v2/service/ec2 v1.120.0
