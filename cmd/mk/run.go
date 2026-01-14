@@ -17,6 +17,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/WangDe7/cd-template/pkg/config"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
@@ -340,6 +341,11 @@ func run() error {
 		leafs[i].Err = leafs[i].Run(workspace, cmd, dockerImage, dockerTags, dockerPush)
 		leafs[i].Finish = true
 		fmt.Print("###   ")
+		testPath := filepath.Join(filepath.Join(leafs[i].ProjectPath...), "deploy-config.yml")
+		config.NewConfig(&testPath)
+		fmt.Println("************************************")
+		fmt.Println(config.Cfg.ConfigmapResource)
+		fmt.Println("************************************")
 		if leafs[i].Type == dep.Service && leafs[i].Err == nil && generateCDK8S {
 			fmt.Printf("### generate[%s] %s's cdk8s\n", configStage, leafs[i].Name)
 			cdk8s.Generate(filepath.Join(filepath.Join(leafs[i].ProjectPath...), "deploy-config.yml"),
