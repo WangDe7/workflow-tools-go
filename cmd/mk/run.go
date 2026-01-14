@@ -343,15 +343,15 @@ func run() error {
 		fmt.Print("###   ")
 		testPath := filepath.Join(filepath.Join(leafs[i].ProjectPath...), "deploy-config.yml")
 		config.NewConfig(&testPath)
-		fmt.Println("************************************")
-		fmt.Println(config.Cfg.ConfigmapResource)
-		fmt.Println("************************************")
 		if leafs[i].Type == dep.Service && leafs[i].Err == nil && generateCDK8S {
 			fmt.Printf("### generate[%s] %s's cdk8s\n", configStage, leafs[i].Name)
 			cdk8s.Generate(filepath.Join(filepath.Join(leafs[i].ProjectPath...), "deploy-config.yml"),
 				configStage,
 				fmt.Sprintf("%s:%s", dockerImage, dockerTags),
 				leafs[i].ProjectPath)
+			fmt.Println("************************************")
+			fmt.Println(config.Cfg.ConfigmapResource)
+			fmt.Println("************************************")
 
 		}
 		if configStage == "prod" {

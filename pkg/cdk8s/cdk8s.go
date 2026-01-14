@@ -8,7 +8,6 @@
 package cdk8s
 
 import (
-	"fmt"
 	"github.com/WangDe7/cd-template/pkg/config"
 	"github.com/WangDe7/cd-template/stage"
 )
@@ -33,7 +32,5 @@ func Generate(configPath, stageStr, image string, servicePath []string) {
 		config.Cfg.Replicas = config.Cfg.TestReplicas
 	}
 	config.Cfg.Image.Path = image
-	fmt.Printf("************************* %s *************************\n", "configmap")
-	fmt.Println(config.Cfg.ConfigmapResource)
 	stage.Synth(stageStr, servicePath...)
 }
