@@ -33,8 +33,7 @@ func Generate(configPath, stageStr, image string, servicePath []string) {
 		config.Cfg.Replicas = config.Cfg.TestReplicas
 	}
 	config.Cfg.Image.Path = image
-	fmt.Println("******************************************")
+	fmt.Printf("************************* %s *************************\n", "configmap")
 	fmt.Println(config.Cfg.ConfigmapResource)
-	fmt.Println("******************************************")
 	stage.Synth(stageStr, servicePath...)
 }
